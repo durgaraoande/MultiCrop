@@ -1,0 +1,45 @@
+{% extends 'layout.html' %} 
+{% block body %}
+
+<style>
+  .mt-0 {
+    margin-top: 50 !important;
+  }
+  .best-crop {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: green;
+  }
+  .alternative-crops {
+    font-size: 1.2em;
+    color: darkorange;
+  }
+  .crop-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .crop-list li {
+    margin: 10px 0;
+  }
+</style>
+
+<div class="container py-2 mx-auto my-50 h-10" style="margin: 12rem;">
+  <div class="row">
+    <div class="col-sm py-2 py-md-3">
+      <div class="card card-body" style="justify-content: center;">
+        <h1 class="text-center">
+          <b>Top 3 Recommended Crops for Your Farm</b>
+        </h1>
+        <ul class="crop-list">
+          {% if top_3_crops %}
+            <li class="text-center best-crop">{{ top_3_crops[0][0] }}: {{ top_3_crops[0][1] }}% (Best Crop)</li>
+            <li class="text-center alternative-crops">{{ top_3_crops[1][0] }}: {{ top_3_crops[1][1] }}% (Alternative)</li>
+            <li class="text-center alternative-crops">{{ top_3_crops[2][0] }}: {{ top_3_crops[2][1] }}% (Alternative)</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
